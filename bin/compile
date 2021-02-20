@@ -25,6 +25,7 @@ BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR=$1
 CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
+export_env_dir $3
 
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
   echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
@@ -33,8 +34,6 @@ elif [ -z "$NGROK_API_TOKEN" ]; then
   echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
   exit 1
 fi
-
-export_env_dir $3
 
 echo -n "-----> Installing ngrok... "
 curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" | indent
