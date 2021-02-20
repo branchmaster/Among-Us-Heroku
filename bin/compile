@@ -40,10 +40,10 @@ curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable
 unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
-echo -n "-----> Starting the server..."
-xinit "${BUILD_DIR}/vendor/wine/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe" $* -- :0
-
 # Start the TCP tunnel
 ngrok_cmd="bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport}"
 echo "Starting ngrok..."
 eval "$ngrok_cmd | tee ngrok.log &"
+
+echo -n "-----> Starting the server..."
+xinit "wine64 ${BUILD_DIR}/Impostor.Server.exe" $* -- :0
