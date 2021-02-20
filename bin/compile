@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+serverport=1234
+
+BP_DIR="$(cd "$(dirname "$0")" && pwd)"
+BUILD_DIR=$1
+CACHE_DIR=$2
+OPT_DIR=$BP_DIR/../opt/
+
+if [ ! -f BUILD_DIR/Impostor.Server.exe ]; then
+  echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
+  exit 1
+elif [ -z "$NGROK_API_TOKEN" ]; then
+  echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
+  exit 1
+fi
+
+export_env_dir $3
+
+APT_CACHE_DIR="$CACHE_DIR/apt/cache"
+APT_STATE_DIR="$CACHE_DIR/apt/state"
+APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
+
+mkdir -p "$APT_CACHE_DIR/archives/partial"
+mkdir -p "$APT_STATE_DIR/lists/partial"
+
+echo "-----> Installing screen... "
+apt-get $APT_OPTIONS update -y | indent
+apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall xorg | indent
+
+mkdir -p $BUILD_DIR/.profile.d
+cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
+export PATH="\$HOME/.apt/usr/bin:\$PATH"
+export LD_LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LD_LIBRARY_PATH"
+export LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LIBRARY_PATH"
+export INCLUDE_PATH="\$HOME/.apt/usr/include:\$INCLUDE_PATH"
+export CPATH="\$INCLUDE_PATH"
+export CPPPATH="\$INCLUDE_PATH"
+export PKG_CONFIG_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/i386-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/pkgconfig:\$PKG_CONFIG_PATH"
+export PYTHONPATH="\$HOME/.apt/usr/lib/python2.7/dist-packages"
+EOF
+
+for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
+  dpkg -x $DEB $BUILD_DIR/.apt/
+done
+
+echo -n "-----> Installing ngrok... "
+curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" | indent
+unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
+echo "done"
+
+echo -n "-----> Starting the server..."
+xinit "${BUILD_DIR}/vendor/wine/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe" $* -- :0 vt$XDG_VTNR 
+
+# Start the TCP tunnel
+ngrok_cmd="bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport}"
+echo "Starting ngrok..."
+eval "$ngrok_cmd | tee ngrok.log &"
