@@ -10,7 +10,7 @@ OPT_DIR=$BP_DIR/../opt/
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
   echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
   exit 1
-elif [ -z "$NGROK_API_TOKEN" ]; then
+elif [ ! "$NGROK_API_TOKEN" ]; then
   echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
   exit 1
 fi
