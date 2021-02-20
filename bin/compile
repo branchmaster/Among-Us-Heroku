@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+set -eu
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+export_env_dir() {
+  env_dir=$1
+  whitelist_regex=${2:-''}
+  blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH|JAVA_OPTS)$'}
+  if [ -d "$env_dir" ]; then
+    for e in $(ls $env_dir); do
+      echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
+      export "$e=$(cat $env_dir/$e)"
+      :
+    done
+  fi
+
 serverport=1234
 
 BP_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -10,7 +28,7 @@ OPT_DIR=$BP_DIR/../opt/
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
   echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
   exit 1
-elif [ ! "$NGROK_API_TOKEN" ]; then
+elif [ -z "$NGROK_API_TOKEN" ]; then
   echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
   exit 1
 fi
