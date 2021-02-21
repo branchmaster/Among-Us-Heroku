@@ -34,7 +34,7 @@ function includeHTML() {
 
 <% open('ngrok.log') do |f| %>
   <% f.lines.select { |line| line.include?("URL:") }.each do |line| %>
-    <h3>Server available at: <%= line.match(/tcp:\/\/(.+:[0-9]+) /)[1] %></h3>
+    <h3 class="ngrok-url">Server available at: <%= line.match(/tcp:\/\/(.+:[0-9]+) /)[1] %></h3>
     <br />
   <% end %>
 <% end %>
