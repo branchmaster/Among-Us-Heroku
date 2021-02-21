@@ -1,7 +1,7 @@
 # Heroku [Among Us Community Edition](https://bit.ly/AUCE_) Buildpack
 
 This is a [Heroku Buildpack](https://devcenter.heroku.com/articles/buildpacks)
-for running a Minecraft server in a [dyno](https://devcenter.heroku.com/articles/dynos).
+for running a Imposter server in a [dyno](https://devcenter.heroku.com/articles/dynos).
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
@@ -41,8 +41,8 @@ Once you have Heroku Exec installed, you can connect to the console using
 ```
 $ heroku ps:exec
 Establishing credentials... done
-Connecting to web.1 on ⬢ lovely-minecraft-2351...
-$ screen -r amongus
+Connecting to web.1 on ⬢ lovely-imposter-2351...
+$ screen -r imposter
 ```
 
 **WARNING** You are now connected to the Imposter server. Use `Ctrl-A Ctrl-D` to exit the screen session. 
@@ -56,4 +56,12 @@ You can customize ngrok by setting the `NGROK_OPTS` config variable. For example
 
 ```
 $ heroku config:set NGROK_OPTS="--remote-addr 1.tcp.ngrok.io:25565"
+```
+## Webserver
+
+You can set a webserver by putting `index.html` in the Web directory
+```sh-session
+echo "<h1>Hi</h1>" > Web/index.html
+git commit -m "Insperational message here"
+git push heroku master
 ```
