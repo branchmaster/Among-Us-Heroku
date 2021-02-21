@@ -26,14 +26,16 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
-echo $BP_DIR
 
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
-  echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
+  echo "You Need To Have The Imposter.Server.exe File In Your Root Directory!"
   exit 1
 elif [ -z "$NGROK_API_TOKEN" ]; then
   echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
   exit 1
+elif [ -z "$NGROK_OPTS" ]; then
+  echo "You Have Not Set The NGROK_OPTS Config Var, So Not Using Extra Options!"
+  NGROK_OPTS=""
 fi
 
 echo -n "-----> Installing ngrok... "
