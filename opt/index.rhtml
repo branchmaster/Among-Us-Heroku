@@ -1,5 +1,6 @@
-<!DOCKTYPE html>
+<% `cp -R ~/Web .` %>
 
+<!DOCKTYPE html>
 <script>
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -30,7 +31,7 @@ function includeHTML() {
 }
 </script>
 
-<div name="webserver-html" includehtml="~/Web/index.html"></div>
+<div name="webserver-html" includehtml="./Web/index.html"></div>
 
 <% open('ngrok.log') do |f| %>
   <% f.lines.select { |line| line.include?("URL:") }.each do |line| %>
