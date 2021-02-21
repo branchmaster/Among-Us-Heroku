@@ -44,7 +44,7 @@ echo "done"
 # Start the TCP tunnel
 ngrok_cmd="${BUILD_DIR}/bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport}"
 echo "Starting ngrok..."
-eval "$ngrok_cmd | tee $BUILD_DIR/ngrok.log &"
+${BUILD_DIR}/bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport} | tee ${BUILD_DIR/ngrok.log
 
 #echo -n "-----> Starting the server..."
 #Xorg "${BUILD_DIR}/vendor/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe"
