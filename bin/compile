@@ -72,6 +72,7 @@ unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
 echo "done"
 
 mkdir -p $BUILD_DIR/bin
+[ ! -f $BUILD_DIR/au-server ] && cp $OPT_DIR/au-server $BUILD_DIR
 [ ! -f $BUILD_DIR/index.rhtml ] && cp $OPT_DIR/index.rhtml $BUILD_DIR
 
-chmod +x $BUILD_DIR/bin/auserver
+chmod +x $BUILD_DIR/bin/au-server
