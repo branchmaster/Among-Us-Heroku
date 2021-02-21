@@ -40,5 +40,9 @@ function includeHTML() {
 <% end %>
   
 <script>
+try {
 includeHtml();
+} catch(err) {
+  console.error(err)
+}
 </script>
