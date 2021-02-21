@@ -26,6 +26,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
+echo $BP_DIR
 
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
   echo "You Need To Have The Imposter.Server.exe File In Your Root Directory"
