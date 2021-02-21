@@ -9,12 +9,12 @@ if [ -z "$NGROK_API_TOKEN" ]; then
 fi
 
 # Start the TCP tunnel
-ngrok_cmd="bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${mc_port}"
+ngrok_cmd="bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport}"
 echo "Starting ngrok..."
 eval "$ngrok_cmd | tee ngrok.log &"
 ngrok_pid=$!
 
-echo "Starting: minecraft ${mc_port}"
+echo "Starting: The Server ${serverport}"
 # WIP
 eval "screen -L -h 2048 -dmS au-server "
 main_pid=$!
