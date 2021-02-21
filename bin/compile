@@ -48,5 +48,5 @@ ngrok_cmd="${BUILD_DIR}/bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --
 echo "Starting ngrok..."
 eval "$ngrok_cmd | tee ngrok.log &"
 
-echo -n "-----> Starting the server..."
-Xorg "${BUILD_DIR}/vendor/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe"
+#echo -n "-----> Starting the server..."
+#Xorg "${BUILD_DIR}/vendor/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe"
