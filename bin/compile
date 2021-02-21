@@ -46,16 +46,17 @@ echo "Starting ngrok..."
 ${BUILD_DIR}/bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport} | tee ${BUILD_DIR}/ngrok.log &
 ngrok_pid=$!
 
-echo "Starting Imposter Server ${serverport}"
-screen -L -dmS imposterserver xinit "${BUILD_DIR}/vendor/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe"
-main_pid=$!
+#echo "Starting Imposter Server ${serverport}"
+#screen -L -dmS imposterserver xinit "${BUILD_DIR}/vendor/bin/wine64 ${BUILD_DIR}/Impostor.Server.exe"
+#main_pid=$!
 
 # Flush the logfile every second, and ensure that the logfile exists
-screen -X "logfile 1" && sleep 1
+#screen -X "logfile 1" && sleep 1
 
-echo "Tailing log"
-eval "tail -f screenlog.0 &"
-tail_pid=$!
+#echo "Tailing log"
+#eval "tail -f screenlog.0 &"
+#tail_pid=$!
 
-trap "kill $ngrok_pid $main_pid $tail_pid" SIGTERM
-trap "kill -9 $ngrok_pid $main_pid $tail_pid; exit" SIGKILL
+# When Ready Add $main_pid And $tail_pid
+trap "kill $ngrok_pid" SIGTERM
+trap "kill -9 $ngrok_pid; exit" SIGKILL
