@@ -2,9 +2,6 @@
 
 set -eu
 
-serverport=1234
-NGROK_OPTS=""
-
 indent() {
   sed -u 's/^/       /'
 }
