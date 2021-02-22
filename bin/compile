@@ -90,7 +90,7 @@ done
 
 ln -s /app/.apt/usr/bin "$BUILD_DIR/xub"
 # Fix xkbcomp path by rewriting Xvfb binary.
-sed -i s:/usr/bin:/app/xub: "$BUID_DIR/.apt/usr/bin/Xvfb"
+sed -i s:/usr/bin:/app/xub: "$BUILD_DIR/.apt/usr/bin/Xvfb"
 
 echo -n "-----> Installing ngrok... "
 curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" | indent
