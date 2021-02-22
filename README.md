@@ -42,7 +42,7 @@ Once you have Heroku Exec installed, you can connect to the console using
 $ heroku ps:exec
 Establishing credentials... done
 Connecting to web.1 on ⬢ lovely-imposter-2351...
-$ screen -r imposter
+$ screen -r amongus
 ```
 
 **WARNING** You are now connected to the Imposter server. Use `Ctrl-A Ctrl-D` to exit the screen session. 
