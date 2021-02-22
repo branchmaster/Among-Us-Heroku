@@ -16,7 +16,7 @@ ngrok_pid=$!
 
 echo "Starting: The Server ${serverport}"
 # WIP
-screen -L -h 2048 -dmS amongus wine "${BUILD_DIR}/Imposter.Server.exe /nogui"
+screen -L -h 2048 -dmS amongus echo wasd"
 main_pid=$!
 
 # Flush the logfile every second, and ensure that the logfile exists
