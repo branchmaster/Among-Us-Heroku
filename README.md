@@ -61,7 +61,7 @@ $ heroku config:set NGROK_OPTS="--remote-addr 1.tcp.ngrok.io:25565"
 
 You can set a webserver by putting `index.html` in the Web directory
 ```sh-session
-echo "<h1>Hi</h1>" > Web/index.html
-git commit -m "Insperational message here"
-git push heroku master
+$ echo "<h1>Hi</h1>" > Web/index.html
+$ git commit -m "Insperational message here"
+$ git push heroku master
 ```
