@@ -16,7 +16,7 @@ ngrok_pid=$!
 
 echo "Starting: The Server ${serverport}"
 # WIP
-eval "screen -dmS amongus xvfb-run wine ${BUILD_DIR}/Imposter.Server.exe"
+screen -dm -S amongus echo "Hi"
 main_pid=$!
 
 # Flush the logfile every second, and ensure that the logfile exists
