@@ -16,7 +16,7 @@ ngrok_pid=$!
 
 echo "Starting: The Server ${serverport}"
 # WIP
-eval "screen -L -h 2048 -dmS amongus echo wasd"
+eval "screen -h 2048 -LdmS amongus sleep 1000"
 main_pid=$!
 
 # Flush the logfile every second, and ensure that the logfile exists
