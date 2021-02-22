@@ -34,6 +34,30 @@ elif [ -z "$NGROK_API_TOKEN" ]; then
   exit 1
 fi
 
+# ------------------------------------ WINE -----------------------------------------------------
+echo "-----> Installing wine 1.6.2"
+
+VENDOR_DIR="vendor"
+DOWNLOAD_URL="https://github.com/iScribes/heroku-buildpack-wine/releases/download/1.6/wine1.6.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+mkdir -p wine
+cd wine
+
+echo "-----> Downloading and extracting from " $DOWNLOAD_URL
+curl -L --silent $DOWNLOAD_URL | tar -xz --strip-components=1
+
+echo "-----> Exporting PATH"
+PROFILE_PATH="$BUILD_DIR/.profile.d/wine.sh"
+mkdir -p $(dirname $PROFILE_PATH)      
+echo 'export PATH="$PATH:${HOME}/vendor/wine/bin"' >> $PROFILE_PATH
+
+# ---------------------------------------------------- SERVER ------------------------------------------------
+
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
@@ -41,9 +65,9 @@ APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
 
-echo "-----> Installing screen... "
+echo "-----> Installing screen and xvfb... "
 apt-get $APT_OPTIONS update -y | indent
-apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen | indent
+apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen xvfb libnotify4 | indent
 mkdir -p $BUILD_DIR/.apt/var/run/screen
 
 mkdir -p $BUILD_DIR/.profile.d
@@ -62,6 +86,10 @@ EOF
 for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
+
+ln -s /app/.apt/usr/bin "$BUILD_DIR/xub"
+# Fix xkbcomp path by rewriting Xvfb binary.
+sed -i s:/usr/bin:/app/xub: "$BUID_DIR/.apt/usr/bin/Xvfb"
 
 echo -n "-----> Installing ngrok... "
 curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" | indent
