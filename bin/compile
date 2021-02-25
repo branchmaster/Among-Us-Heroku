@@ -23,7 +23,6 @@ BP_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR=$1
 CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
-
 export_env_dir $3
 
 if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
@@ -35,10 +34,10 @@ if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
 fi
 
 # ------------------------------------ WINE -----------------------------------------------------
-echo "-----> Installing wine 1.6.2"
+echo "-----> Installing wine 6.0"
 
 VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://github.com/iScribes/heroku-buildpack-wine/releases/download/1.6/wine1.6.tar.gz"
+DOWNLOAD_URL="https://github.com/TheBotlyNoob/heroku-buildpack-wine/releases/latest/download/latest-wine.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
@@ -58,6 +57,7 @@ echo 'export PATH="$PATH:${HOME}/vendor/wine/bin"' >> $PROFILE_PATH
 
 # ---------------------------------------------------- SERVER ------------------------------------------------
 
+cd $BP_DIR
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
 APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state=$APT_STATE_DIR"
