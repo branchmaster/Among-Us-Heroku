@@ -7,7 +7,7 @@ for running a Imposter server in a [dyno](https://devcenter.heroku.com/articles/
 
 ## Usage
 
-Create a [free ngrok account](https://ngrok.com/) and copy your Auth token. Then create a new Git project with a the Imposter.Server.exe and all the files from [here](https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/NewServer.tar.gz)
+Create a [free ngrok account](https://ngrok.com/) and copy your Auth token. Then create a new Git project with a the Imposter.Server.exe and all the files from [here](https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz)
 
 Then, install the [Heroku toolbelt](https://toolbelt.heroku.com/).
 Create a Heroku app, set your ngrok token, and push:
