@@ -1,0 +1,21 @@
+{
+  "name": "Among Us CE",
+  "description": "An Among Us CE Server In Heroku",
+  "keywords": [
+    "games",
+    "among us",
+    "among us CE"
+  ],
+  "repository": "https://github.com/TheBotlyNoob/AUCE-Buildpack",
+  "env": {
+    "NGROK_API_TOKEN": {
+      "description": "Your personal ngrok API token",
+      "required": true
+      }
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/TheBotlyNoob/AUCE-Buildpack"
+    }
+  ]
+}
