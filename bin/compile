@@ -25,38 +25,9 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
-if [ ! -f $BUILD_DIR/Impostor.Server.exe ]; then
-  echo "Installing The Impostor Server"
-  curl -L --silent https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1 
-  elif [ -z "$NGROK_API_TOKEN" ]; then
-  echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
-  exit 1
-fi
-
-# ------------------------------------ WINE -----------------------------------------------------
-echo "-----> Installing wine 6.0"
-
-VENDOR_DIR="vendor"
-DOWNLOAD_URL="https://github.com/TheBotlyNoob/heroku-buildpack-wine/releases/latest/download/latest-wine.tar.gz"
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR
-mkdir -p $VENDOR_DIR
-cd $VENDOR_DIR
-mkdir -p wine
-cd wine
-
-echo "-----> Downloading and extracting from " $DOWNLOAD_URL
-curl -L --silent $DOWNLOAD_URL | tar -xz --strip-components=1
-
-echo "-----> Exporting PATH"
-PROFILE_PATH="$BUILD_DIR/.profile.d/wine.sh"
-mkdir -p $(dirname $PROFILE_PATH)      
-echo 'export PATH="$PATH:${HOME}/vendor/wine/bin"' >> $PROFILE_PATH
-
-# ---------------------------------------------------- SERVER ------------------------------------------------
-
+mkdir -p $BUILD_DIR/bin/Server
+cd $BUILD_DIR/bin/Server
+curl -L --silent https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1
 cd $BP_DIR
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
 APT_STATE_DIR="$CACHE_DIR/apt/state"
@@ -65,9 +36,9 @@ APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
 
-echo "-----> Installing screen and xvfb... "
+echo "-----> Installing screen... "
 apt-get $APT_OPTIONS update -y | indent
-apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen xvfb libnotify4 | indent
+apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen npm | indent
 mkdir -p $BUILD_DIR/.apt/var/run/screen
 
 mkdir -p $BUILD_DIR/.profile.d
@@ -88,17 +59,10 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
 
-ln -s /app/.apt/usr/bin "$BUILD_DIR/xub"
-# Fix xkbcomp path by rewriting Xvfb binary.
-sed -i s:/usr/bin:/app/xub: "$BUILD_DIR/.apt/usr/bin/Xvfb"
-
-echo -n "-----> Installing ngrok... "
-curl --silent -o ngrok.zip -L "https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip" | indent
-unzip ngrok.zip -d $BUILD_DIR/bin > /dev/null 2>&1
-echo "done"
-
 mkdir -p $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/au-server ] && cp $OPT_DIR/au-server $BUILD_DIR/bin
-[ ! -f $BUILD_DIR/index.rhtml ] && cp $OPT_DIR/index.rhtml $BUILD_DIR
+[ ! -f $BUILD_DIR/index.html ] && cp $OPT_DIR/index.html $BUILD_DIR/bin
+[ ! -f $BUILD_DIR/404.html ] && cp $OPT_DIR/404.html $BUILD_DIR/bin
 
 chmod +x $BUILD_DIR/bin/au-server
+chmod +x $BUILD_DIR/bin/Server/Imposter.Server

@@ -3,30 +3,15 @@
 serverport=22023
 port=${1:-${PORT:-8080}}
 
-if [ -z "$NGROK_API_TOKEN" ]; then
-  echo "You Must Set The NGROK_API_TOKEN Config Var To Create A TCP Tunnel!"
-  exit 1
-fi
-
 # Start the TCP tunnel
-ngrok_cmd="bin/ngrok tcp -authtoken $NGROK_API_TOKEN -log stdout --log-level debug ${NGROK_OPTS} ${serverport}"
-echo "Starting ngrok..."
-eval "$ngrok_cmd | tee ngrok.log &"
-ngrok_pid=$!
+echo "Starting: LocalTunnel..."
+eval "npx localtunnel -p  | tee tunnel.log &"
+tunnel_pid=$!
 
-echo "Starting: The Server ${serverport}"
-# WIP
-eval "screen -h 2048 -LdmS amongus wineconsole Impostor.Server.exe"
+echo "Starting: The Server At Port ${serverport}"
+eval "screen -h 2048 -dmS server bin/Server/Impostor.Server | tee bin/server.log"
 main_pid=$!
 
-# Flush the logfile every second, and ensure that the logfile exists
-screen -X "logfile 1" && sleep 1
+trap "kill $tunnel_pid $main_pid $tail_pid" EXIT
 
-echo "Tailing log"
-eval "tail -f screenlog.0 &"
-tail_pid=$!
-
-trap "kill $ngrok_pid $main_pid $tail_pid" SIGTERM
-trap "kill -9 $ngrok_pid $main_pid $tail_pid; exit" SIGKILL
-
-eval "ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => \"0.0.0.0\", :Port => ${port}, :MimeTypes => {\"rhtml\" => \"text/html\"}, :DocumentRoot => Dir.pwd).start'"
+npx http-server -p $port
