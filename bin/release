@@ -3,6 +3,5 @@
 cat <<EOF
 ---
 default_process_types:
-  web: npx http-server -p $PORT
-  worker: bin/au-server
+  web: bin/au-server $PORT
 EOF

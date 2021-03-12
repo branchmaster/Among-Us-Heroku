@@ -2,11 +2,10 @@
 serverport=22023
 # Start the TCP tunnel
 echo "Starting: LocalTunnel..."
-npx localtunnel -p $serverport | tee bin/tunnel.log &
+screen -h 2048 -dmS tunnel npx localtunnel -p $serverport | tee bin/tunnel.log
 tunnel_pid=$!
 Starting: The Server At Port ${serverport}
 screen -h 2048 -dmS server Server/Impostor.Server | tee bin/server.log
 main_pid=$!
-cd bin
 trap "kill $tunnel_pid $main_pid $sync_pid $tail_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid $sync_pid $tail_pid; exit" SIGKILL
