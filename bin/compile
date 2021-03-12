@@ -27,6 +27,7 @@ export_env_dir $3
 
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
+echo "Installing The Impostor Server"
 curl -L --silent https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1
 cd $BP_DIR
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
@@ -59,10 +60,9 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
 
-mkdir -p $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/au-server ] && cp $OPT_DIR/au-server $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/index.html ] && cp $OPT_DIR/index.html $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/404.html ] && cp $OPT_DIR/404.html $BUILD_DIR/bin
 
 chmod +x $BUILD_DIR/bin/au-server
-chmod +x $BUILD_DIR/bin/Server/Imposter.Server
+chmod +x $BUILD_DIR/bin/Server/Impostor.Server
