@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 serverport=22023
-port=${1:-${PORT:-8080}}
 # Start the TCP tunnel
 echo "Starting: LocalTunnel..."
 npx localtunnel -p $serverport | tee bin/tunnel.log &
@@ -10,4 +9,4 @@ screen -h 2048 -dmS server Server/Impostor.Server | tee bin/server.log
 main_pid=$!
 trap "kill $tunnel_pid $main_pid $tail_pid" EXIT
 cd bin
-npx http-server -p $port
+npx http-server -p 80
