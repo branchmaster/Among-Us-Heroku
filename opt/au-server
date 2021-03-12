@@ -5,13 +5,13 @@ port=${1:-${PORT:-8080}}
 
 # Start the TCP tunnel
 echo "Starting: LocalTunnel..."
-eval "npx localtunnel -p  | tee tunnel.log &"
+eval "npx localtunnel -p $serverport | tee tunnel.log &"
 tunnel_pid=$!
 
+cd bin
 echo "Starting: The Server At Port ${serverport}"
-eval "screen -h 2048 -dmS server bin/Server/Impostor.Server | tee bin/server.log"
+eval "screen -h 2048 -dmS server Server/Impostor.Server | tee server.log"
 main_pid=$!
 
 trap "kill $tunnel_pid $main_pid $tail_pid" EXIT
-
 npx http-server -p $port
