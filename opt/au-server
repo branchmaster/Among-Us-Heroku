@@ -10,4 +10,3 @@ main_pid=$!
 cd bin
 trap "kill $tunnel_pid $main_pid $sync_pid $tail_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid $sync_pid $tail_pid; exit" SIGKILL
-npx http-server -p $PORT
