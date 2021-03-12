@@ -86,7 +86,7 @@ async function filterLines(url,filter) {
 (async function(){
     var lines=await filterLines(`/tunnel.log`,"your url is:");
     if (lines.length!=0) {
-        lines = lines[lines.length-1].match("https://[A-Za-z0-9.,;:\'!?%/=\"\-\\(\\)\\\\]*");
+        lines = lines[lines.length-1].match("https://[A-Za-z0-9.,;:\'!?%/=\"\\(\\)\\\\-]*");
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
