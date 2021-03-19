@@ -62,6 +62,7 @@ done
 
 cp $OPT_DIR/au-server $BUILD_DIR/bin
 cp $OPT_DIR/index.php $BUILD_DIR
+cp $OPT_DIR/composer.json $BUILD_DIR
 
 chmod +x $BUILD_DIR/bin/au-server
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
