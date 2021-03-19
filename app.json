@@ -9,11 +9,5 @@
   "Among Us CE",
   "AUCE"
   ],
-  "env": {
-      "LOCALTUNNEL_OPTS": {
-      "description": "Extra Options For LocalTunnel",
-      "required": false
-    }
-  },
   "stack": "heroku-20"
 }
