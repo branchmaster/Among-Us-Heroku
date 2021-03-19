@@ -40,7 +40,7 @@ foreach (range(0, count($lines)) as $i) {
     }}
 if (count($lines) != 0) {
     $lines = strpos($lines[count($lines) - 1], "https://[A-Za-z0-9./-]*");
-    echo ("Your LocalTunnel URL Is: " . $lines . " On Port 22023");
+    echo ("Your LocalTunnel URL Is: ",$lines," On Port 22023");
 } else {
     echo ("You Don't Have A LocalTunnel URL... Try Again");
 } ?>
