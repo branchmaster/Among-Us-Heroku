@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 echo "Starting: LocalTunnel"
 npx localtunnel --port 22023 >tunnelurl.txt &
+tunnel_pid=$!
 sleep 5
-echo "Starting: Web Server..."
-php -S localhost:$PORT &
-sleep 2
 echo "Starting: The Server At Port 22023..."
 screen -h 2048 -dmS server Server/Impostor.Server | tee server.log
+main_pid=$!
 sleep 2
-trap "kill $tunnel_pid $main_pid $sync_pid $tail_pid" SIGTERM
-trap "kill -9 $tunnel_pid $main_pid $sync_pid $tail_pid; exit" SIGKILL
+trap "kill $tunnel_pid $main_pid" SIGTERM
+trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL

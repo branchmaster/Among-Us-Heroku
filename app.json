@@ -9,5 +9,13 @@
   "Among Us CE",
   "AUCE"
   ],
+    "buildpacks": [
+      {
+        "url": "https://github.com/TheBotlyNoob/AUCE-Buildpack"
+      },
+      {
+        "url": "heroku/php"
+      }
+    ],
   "stack": "heroku-20"
 }
