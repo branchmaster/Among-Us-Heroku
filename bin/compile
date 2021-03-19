@@ -56,9 +56,7 @@ export SCREENDIR="\$HOME/.apt/var/run/screen"
 export BUILD_DIR=$BUILD_DIR
 EOF
 
-for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
-  dpkg -x $DEB $BUILD_DIR/.apt/
-done
+for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb);do dpkg -x $DEB $BUILD_DIR/.apt/;done
 
 cp $OPT_DIR/au-server $BUILD_DIR/bin
 cp $OPT_DIR/index.php $BUILD_DIR
