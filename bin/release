@@ -3,5 +3,5 @@
 cat <<EOF
 ---
 default_process_types:
-  web: bin/au-server
+  worker: bin/au-worker
 EOF
