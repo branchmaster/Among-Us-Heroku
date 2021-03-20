@@ -1,7 +1,5 @@
 #!/bin/sh
 
 cat <<EOF
----
-default_process_types:
-  web: bin/run $PORT
+web: bin/run $PORT
 EOF
