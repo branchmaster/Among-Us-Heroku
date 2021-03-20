@@ -33,17 +33,14 @@
 <body>
 <div id="tunnel">
 <h3 id="tunnelurl"><?php $lines=preg_split("/\r\n|\n|\r/",file_get_contents("serverurl.txt"));
-$linecontents = array();
-foreach (range(0, count($lines)) as $i) {
-    if (str_contains($lines[$i], "your url is:") ) {
-        array_push($linecontents, $lines[$i]);
-    }}
-if (count($lines) != 0) {
-    $lines = strpos($lines[count($lines) - 1], "https://[A-Za-z0-9./-]*");
-    echo ("Your LocalTunnel URL Is: ",$lines," On Port 22023");
-} else {
-    echo ("You Don't Have A LocalTunnel URL... Try Again");
-} ?>
+$linecontents=array();
+foreach (range(0,count($lines))as $i){
+    if (str_contains($lines[$i], "your url is:")){
+        array_push($linecontents,$lines[$i]);
+}}
+if (count($linecontents)!=0){
+    $linecontents=strpos($linescontents[array_key_last($linecontents)],"https://[A-Za-z0-9./-]*");echo("Your LocalTunnel URL Is: ",$linescontents," On Port 22023");}
+else{echo("You Don't Have A LocalTunnel URL... Try Again");}?>
 <br>
 </div>
 <div id="serverterminal">
