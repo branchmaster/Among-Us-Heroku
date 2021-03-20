@@ -39,7 +39,7 @@ mkdir -p "$APT_STATE_DIR/lists/partial"
 
 echo "-----> Installing screen and npm... "
 apt-get $APT_OPTIONS update -y | indent
-apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen npm php | indent
+apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen npm php php-mbstring | indent
 mkdir -p $BUILD_DIR/.apt/var/run/screen
 
 #for every startup
@@ -60,10 +60,8 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
 
-cp $OPT_DIR/index.php $BUILD_DIR
-cp $OPT_DIR/au-server $BUILD_DIR
-cp $OPT_DIR/composer.json $BUILD_DIR
-cp -R $OPT_DIR/favicons $BUILD_DIR/favicons/
+cp $BUILD_DIR/run $BUILD_DIR/bin/
+cp -R $BP_DIR/../web $BUILD_DIR/web/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
-chmod +x $BUILD_DIR/au-server
+chmod +x $BUILD_DIR/bin/run
