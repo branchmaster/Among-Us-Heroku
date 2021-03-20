@@ -65,4 +65,4 @@ cp -R $OPT_DIR/favicons $BUILD_DIR/favicons/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $OPT_DIR/au-server
-$OPT_DIR/au-server$BUILD_DIR
+$OPT_DIR/au-server $BUILD_DIR
