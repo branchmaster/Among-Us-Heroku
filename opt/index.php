@@ -39,8 +39,8 @@ foreach (range(0,count($lines))as $i){
         array_push($linecontents,$lines[$i]);
 }}
 if (empty($linecontents)){
-    $linecontents=strpos($linecontents[count($linecontents)-1]);//,"https://[A-Za-z0-9./-]*");
-    echo("Your LocalTunnel URL Is: ",$linecontents," On Port 22023");}
+    $linecontents=strpos($linecontents[count($linecontents)-1],"https://[A-Za-z0-9./-]*");
+    echo("Your LocalTunnel URL Is: ". $linecontents ." On Port 22023");}
 else{echo("You Don't Have A LocalTunnel URL... Try Again");}?>
 <br>
 </div>
