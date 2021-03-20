@@ -3,5 +3,5 @@
 cat <<EOF
 ---
 default_process_types:
-  web: heroku-php-apache2
+  web: bin/au-server
 EOF

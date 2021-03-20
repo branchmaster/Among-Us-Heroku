@@ -39,7 +39,7 @@ foreach (range(0,count($lines))as $i){
         array_push($linecontents,$lines[$i]);
 }}
 if (count($linecontents)!=0){
-    $linecontents=strpos($linecontents[array_key_last($linecontents)],"https://[A-Za-z0-9./-]*");
+    $linecontents=strpos($linecontents[count($linecontents)-1],"https://[A-Za-z0-9./-]*");
     echo("Your LocalTunnel URL Is: ",$linecontents," On Port 22023");}
 else{echo("You Don't Have A LocalTunnel URL... Try Again");}?>
 <br>
@@ -49,8 +49,8 @@ else{echo("You Don't Have A LocalTunnel URL... Try Again");}?>
 <p id="serverterminalsaying"><b>Below Is The Imposter Server</b></p>
 <hr>
 <br>
-<p id="serverterminalcontents"><?php //function tailCustom($filepath,$lines=1,$adaptive=true){$f=@fopen($filepath,"rb");if($f===false)return false;if(!$adaptive)$buffer=4096;else $buffer=($lines<2?64:($lines<10?512:4096));fseek($f,-1,SEEK_END);if(fread($f,1)!="\n")$lines-=1;$output='';$chunk='';while(ftell($f)>0&&$lines>=0){$seek=min(ftell($f),$buffer);fseek($f,-$seek,SEEK_CUR);$output=($chunk=fread($f,$seek)).$output;fseek($f,-mb_strlen($chunk,'8bit'),SEEK_CUR);$lines-=substr_count($chunk,"\n");}while($lines++<0){$output=substr($output,strpos($output,"\n")+1);}fclose($f);return trim($output);}
-//echo(tailCustom("server.log"));?></p>
+<p id="serverterminalcontents"><?php function tailCustom($filepath,$lines=1,$adaptive=true){$f=@fopen($filepath,"rb");if($f===false)return false;if(!$adaptive)$buffer=4096;else $buffer=($lines<2?64:($lines<10?512:4096));fseek($f,-1,SEEK_END);if(fread($f,1)!="\n")$lines-=1;$output='';$chunk='';while(ftell($f)>0&&$lines>=0){$seek=min(ftell($f),$buffer);fseek($f,-$seek,SEEK_CUR);$output=($chunk=fread($f,$seek)).$output;fseek($f,-mb_strlen($chunk,'8bit'),SEEK_CUR);$lines-=substr_count($chunk,"\n");}while($lines++<0){$output=substr($output,strpos($output,"\n")+1);}fclose($f);return trim($output);}
+echo(tailCustom("server.log"));?></p>
 </div>
 </body>
 </html>
