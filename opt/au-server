@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 BUILD_DIR=$1
 echo "Starting: LocalTunnel"
-$BUILD_DIR/.apt/usr/bin/npx localtunnel --port 22023 >$BUILD_DIR/tunnelurl.txt &
+npx localtunnel --port 22023 >$BUILD_DIR/tunnelurl.txt &
 tunnel_pid=$!
 sleep 5
 echo "Starting: The Server At Port 22023..."
-$BUILD_DIR/.apt/usr/bin/screen -h 2048 -dmS server Server/Impostor.Server | tee $BUILD_DIR/server.log
+screen -h 2048 -dmS server Server/Impostor.Server | tee $BUILD_DIR/server.log
 main_pid=$!
 sleep 2
 trap "kill $tunnel_pid $main_pid" SIGTERM
