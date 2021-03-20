@@ -61,7 +61,7 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
 done
 
 cp $BUILD_DIR/run $BUILD_DIR/bin/
-cp -R $BP_DIR/../web $BUILD_DIR/web/
+cp -R $BP_DIR/../web $BUILD_DIR/bin/web/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
