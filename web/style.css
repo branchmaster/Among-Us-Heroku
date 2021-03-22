@@ -1,0 +1,23 @@
+@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,bold&subset=Latin";
+
+#tunnel {
+    display: flex;
+    justify-content: center;
+}
+#tunnel-url {
+    text-align: center;
+}
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+body {
+    background-color: black;
+    height: 100vw;
+    color: white;
+    font-family: "Ubuntu Mono","times new roman",times,roman,serif;
+    text-shadow: 0 0 5px #C8C8C8;
+}
