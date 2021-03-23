@@ -2,7 +2,7 @@ $("#serverinfo").hide();
 
 const getFile = async url => {
   var contents;
-  await A$.get(url, data => {
+  await $.get(url, data => {
       contents = data;
   });
   return contents;
