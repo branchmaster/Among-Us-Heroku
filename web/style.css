@@ -14,6 +14,25 @@ footer {
     bottom: 0;
     width: 100%;
 }
+#serverinfo {
+    background-color: red;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  
+  #serverinfo:hover {
+    background-color: #ce0606;
+    cursor: pointer;
+  }
+  
+  #serverinfo:active {
+    box-shadow: none;
+    top: 5px;
+  }
 body {
     background-color: black;
     height: 100vw;
