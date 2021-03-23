@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 cd bin/
+ls
+echo "port is ${PORT}"
 echo "Starting: The Server At Port 22023..."
 screen -h 2048 -dmS server Server/Impostor.Server
 main_pid=$!
