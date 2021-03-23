@@ -14,3 +14,4 @@ trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
 npx http-server bin/ -p $PORT
+echo "THE WEB SERVER IS UP"
