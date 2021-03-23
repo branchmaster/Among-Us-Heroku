@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+pwd
 echo "Starting: LocalTunnel"
 npx localtunnel --port 22023 | tee bin/tunnelurl.txt &
 tunnel_pid=$!
