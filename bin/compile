@@ -25,7 +25,7 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
-rm -r bin/
+rm -r $BUILD_DIR/bin/
 
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
