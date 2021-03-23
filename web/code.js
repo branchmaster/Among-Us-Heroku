@@ -10,7 +10,7 @@ $("#serverinfo").hide();
         data: {
             value: 1
         },
-        method: 'post',
+        method: 'GET',
         error: XMLHttpRequest => {
             $("#tunnelurl").html(`Error: Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
             throw new Error(`Error: Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
