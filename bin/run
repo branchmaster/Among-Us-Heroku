@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 cd bin/
-ls
-echo "port is ${PORT}"
-echo "Starting: The Server At Port 22023..."
-screen -h 2048 -dmS server Server/Impostor.Server
-main_pid=$!
-sleep 2
-echo "Starting: The Web Server"
-screen -h 2048 -dmS web npx http-server $PORT
-sleep 2
+
 echo "Starting: LocalTunnel"
 npx localtunnel --port 22023 | tee tunnelurl.txt &
 tunnel_pid=$!
 sleep 5
-trap "kill $web_pid $tunnel_pid $main_pid" SIGTERM
-trap "kill -9 $web_pid $tunnel_pid $main_pid; exit" SIGKILL
+
+echo "Starting: The Server At Port 22023..."
+screen -h 2048 -dmS server Server/Impostor.Server
+main_pid=$!
+sleep 2
+
+trap "kill $tunnel_pid $main_pid" SIGTERM
+trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
+
+echo "Starting: The Web Server"
+npx http-server $PORT
