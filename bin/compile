@@ -25,6 +25,8 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
+rm -r bin/
+
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
 echo "Installing The Impostor Server"

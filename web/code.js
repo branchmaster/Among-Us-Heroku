@@ -1,4 +1,4 @@
-"use strict";
+$("#serverinfo").hide();
 
 const getFile = async url => {
   var contents;
@@ -30,6 +30,7 @@ const filterLines = async (url, filter) => {
     $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
     lines = lines.replace('https://', '');
     $("#serverinfo").attr('href', `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`).html("Click To Get The Server File!");
+    $("#serverinfo").show();
   } else {
     $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
   }
