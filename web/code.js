@@ -1,4 +1,5 @@
 "use strict";
+
 (async () => {
     var lines;
     await $.ajax({
@@ -20,7 +21,12 @@
         lines = lines.match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
-        $("#serverinfo").attr('href', `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`).removeAttr("hidden");
+        $("<a/>", {
+            id: '#serverinfo',
+            href: `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`,
+            text: 'Click Here To Get The Server File!',
+            target: '_blank'
+        }).appendTo("#tunnel");
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }

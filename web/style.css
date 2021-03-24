@@ -1,7 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,bold&subset=Latin";
 
-.hidden{display:none;}
-
 #tunnel {
     display: flex;
     justify-content: center;
