@@ -62,11 +62,11 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
 
-echo "-----> Installing npm packages..."
-$BUILD_DIR/.apt/usr/bin/npm i --prefix $BUILD_DIR/bin/ -g
-
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
+
+echo "-----> Installing npm packages..."
+$BUILD_DIR/.apt/usr/bin/npm i --prefix $BUILD_DIR/bin/ -g
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
