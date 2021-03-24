@@ -1,7 +1,6 @@
 "use strict";
 (async () => {
-    var linecontents = [],
-        lines;
+    var lines;
     await $.ajax({
         url: "/tunnel.log",
         data: {
@@ -17,8 +16,8 @@
         }
     });
 
-    if (linecontents.length != 0) {
-        lines = lines[lines.length - 1].match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
+    if (lines !== '') {
+        lines = lines.match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
         $("#serverinfo").attr('href', `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`);
