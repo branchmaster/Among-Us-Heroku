@@ -25,16 +25,6 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
-echo "-----> Installing The Server And Dependencies..."
-rm -r $BUILD_DIR/bin/
-mkdir -p $BUILD_DIR/bin/Server
-cd $BUILD_DIR/bin/Server
-curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar --strip-components=1 -zxf -
-mkdir -p $BUILD_DIR/bin/dotnet
-cd $BUILD_DIR/bin/dotnet
-curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/dotnet.tar.gz |tar --strip-components=1 -zxf -
-cd $BP_DIR
-
 #Download npm
 mkdir -p "$CACHE_DIR/apt/cache/archives/partial"
 mkdir -p "$CACHE_DIR/apt/state/lists/partial"
@@ -63,6 +53,6 @@ for DEB in $(ls -1 $CACHE_DIR/apt/cache/archives/*.deb);do dpkg -x $DEB $BUILD_D
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
 
-ls -a1 $BUILD_DIR/bin/
+chmod $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
 chmod +x $BUILD_DIR/bin/localtunnel.js
