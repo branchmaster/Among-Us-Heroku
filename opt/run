@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")")"
+BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 npm i --prefix $BIN_DIR -g
 
 echo "Starting: LocalTunnel"
