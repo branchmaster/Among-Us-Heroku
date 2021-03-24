@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-npm i --prefix $BIN_DIR > /dev/null
+npm i --prefix $BIN_DIR
 
 echo "Starting: LocalTunnel"
 $BIN_DIR/localtunnel.js &
@@ -17,4 +17,4 @@ trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
-$BIN_DIR/node_modules/http-server/bin/http-server bin/ -p $PORT
+$BIN_DIR/node_modules/http-server/bin/http-server $BIN_DIR -p $PORT

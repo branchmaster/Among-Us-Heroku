@@ -29,8 +29,7 @@ rm -r $BUILD_DIR/bin/
 
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
-echo "Installing The Impostor Server"
-curl -L --silent https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1
+curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1
 cd $BP_DIR
 
 mkdir -p $BUILD_DIR/.profile.d
