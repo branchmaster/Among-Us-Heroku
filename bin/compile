@@ -29,10 +29,10 @@ rm -r $BUILD_DIR/bin/
 
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
-curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar --strip-components=1 -zxvf -
+curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar --strip-components=1 -zxf -
 mkdir -p $BUILD_DIR/bin/dotnet
 cd $BUILD_DIR/bin/dotnet
-curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/dotnet.tar.gz |tar --strip-components=1 -zxvf -
+curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/dotnet.tar.gz |tar --strip-components=1 -zxf -
 cd $BP_DIR
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
