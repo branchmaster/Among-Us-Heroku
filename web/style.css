@@ -15,11 +15,6 @@ footer {
     width: 100%;
 }
 
-#serverinfoContainer {
-    display: flex;
-    justify-content: center;
-}
-
 #serverinfo {
     background-color: purple;
     box-shadow: 0 5px 0 #3d1337;
@@ -40,10 +35,11 @@ footer {
     box-shadow: none;
     top: 5px;
   }
+
 body {
     background-color: black;
     height: 100vw;
     color: white;
-    font-family: "Ubuntu Mono","times new roman",times,roman,serif;
+    font-family: "Ubuntu Mono";
     text-shadow: 0 0 5px #C8C8C8;
 }
