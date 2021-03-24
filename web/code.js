@@ -22,7 +22,7 @@
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
         $("<a/>", {
-            id: '#serverinfo',
+            id: 'serverinfo',
             href: `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`,
             text: 'Click Here To Get The Server File!',
             target: '_blank'
