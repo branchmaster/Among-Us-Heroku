@@ -13,7 +13,7 @@ const fs = require("fs"),
         proto: "tcp",
         authtoken: ngrok_authtoken
     });
-    fs.writeFile("bin/tunnel.log", url, err => {
+    fs.writeFile("bin/tunnel.log", `https://theurlis${url}`, err => {
         if (err) throw err;
     });
 })();
