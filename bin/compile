@@ -57,4 +57,4 @@ cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
-chmod +x $BUILD_DIR/bin/localtunnel.js
+chmod +x $BUILD_DIR/bin/ngrok.js
