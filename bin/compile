@@ -64,7 +64,6 @@ done
 
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
-cp $BP_DIR/package.json $BUILD_DIR/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
