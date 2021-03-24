@@ -1,6 +1,6 @@
 "use strict";
 
-const main = async () => {
+(async () => {
     var lines;
     await $.ajax({
         url: "/tunnel.log",
@@ -31,8 +31,4 @@ const main = async () => {
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }
-};
-
-if (typeof require !== 'undefined' && require.main === module) {
-    main();
-}
+})();
