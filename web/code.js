@@ -19,15 +19,16 @@
 
     if (lines !== '') {
         lines = lines.match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
-        $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines}`);
+        $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
-        $("<br/>",{}).appendTo("#tunnel");
+        $("<hr>").appendTo("body");
+        $("<br>").appendTo("body");
         $("<a/>", {
             id: 'serverinfo',
             href: `https://impostor.github.io/Impostor/#${lines}`,
             text: 'Click Here To Get The Server File!',
             target: '_blank'
-        }).appendTo("#tunnel");
+        }).appendTo("body");
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }
