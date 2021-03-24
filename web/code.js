@@ -1,5 +1,4 @@
 "use strict";
-$('#serverinfo').removeClass('hidden');
 (async () => {
     var linecontents = [],
         lines;
@@ -10,19 +9,13 @@ $('#serverinfo').removeClass('hidden');
         },
         method: 'GET',
         error: XMLHttpRequest => {
-            $("#tunnelurl").html(`Error: Failed Getting tunnel.log Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
-            throw new Error(`Failed Getting tunnel.log Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
+            $("#tunnelurl").html(`Error: Failed Getting tunnel.log. Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
+            throw new Error(`Failed Getting tunnel.log. Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
         },
         success: data => {
-            lines = data.toString().split("\n");
+            lines = data;
         }
     });
-
-    for (var i = 0; i < lines.length; i++) {
-        if (lines[i].includes("your url is:")) {
-            linecontents.push(`\n${lines[i]}`);
-        }
-    }
 
     if (linecontents.length != 0) {
         lines = lines[lines.length - 1].match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();

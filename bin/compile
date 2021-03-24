@@ -39,7 +39,7 @@ APT_OPTIONS="-o debug::nolocking=true -o dir::cache=$APT_CACHE_DIR -o dir::state
 mkdir -p "$APT_CACHE_DIR/archives/partial"
 mkdir -p "$APT_STATE_DIR/lists/partial"
 
-echo "-----> Installing screen and npm packages... "
+echo "-----> Installing screen and npm... "
 apt-get $APT_OPTIONS update -y | indent
 apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen npm | indent
 mkdir -p $BUILD_DIR/.apt/var/run/screen
@@ -61,6 +61,9 @@ EOF
 for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   dpkg -x $DEB $BUILD_DIR/.apt/
 done
+
+echo "-----> Installing npm packages..."
+npm i --prefix $BUILD_DIR/bin/ -g
 
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
