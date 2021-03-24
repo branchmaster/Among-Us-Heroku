@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$(readlink -f "$0")")"
-npm i
+BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")")"
+npm i --prefix $BIN_DIR -g
 
 echo "Starting: LocalTunnel"
-./localTunnel.js &
+$BIN_DIR/localTunnel.js &
 tunnel_pid=$!
 sleep 5
 
 echo "Starting: The Server At Port 22023..."
-screen -h 2048 -dmS server ./Server/Impostor.Server
+screen -h 2048 -dmS server $BIN_DIR/Server/Impostor.Server
 main_pid=$!
 sleep 2
 
@@ -17,4 +17,4 @@ trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
-./node_modules/http-server/bin/http-server bin/ -p $PORT
+$BIN_DIR/node_modules/http-server/bin/http-server bin/ -p $PORT
