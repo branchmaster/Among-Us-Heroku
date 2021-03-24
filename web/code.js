@@ -20,15 +20,17 @@
     if (lines !== '') {
         lines = lines.match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
-        lines = lines.replace('https://', '');
         $("<hr>").appendTo("body");
-        $("<br>").appendTo("body");
+        $("<div/>", {
+            id: 'serverinfoContainer'
+        }).appendTo("body");
+        lines = lines.replace('https://', '');
         $("<a/>", {
             id: 'serverinfo',
             href: `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`,
             text: 'Click Here To Get The Server File!',
             target: '_blank'
-        }).appendTo("body");
+        }).appendTo("#serverinfoContainer");
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }

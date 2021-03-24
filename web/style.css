@@ -14,6 +14,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#serverinfoContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #serverinfo {
     background-color: purple;
     box-shadow: 0 5px 0 #3d1337;
