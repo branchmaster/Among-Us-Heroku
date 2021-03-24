@@ -63,6 +63,6 @@ for DEB in $(ls -1 $CACHE_DIR/apt/cache/archives/*.deb);do dpkg -x $DEB $BUILD_D
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
 
-ls -a1 $BUILD_DIR/bin/
+find $BUILD_DIR/bin/
 chmod +x $BUILD_DIR/bin/run
 chmod +x $BUILD_DIR/bin/localtunnel.js
