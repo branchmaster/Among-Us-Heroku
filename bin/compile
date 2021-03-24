@@ -25,8 +25,8 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
+echo "-----> Installing The Server And Dependencies..."
 rm -r $BUILD_DIR/bin/
-
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
 curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar --strip-components=1 -zxf -
@@ -64,6 +64,6 @@ for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb);do dpkg -x $DEB $BUILD_DIR/.ap
 cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
 
-chmod +x $BUILD_DIR/bin/Server
+chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
 chmod +x $BUILD_DIR/bin/localtunnel.js

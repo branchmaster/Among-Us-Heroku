@@ -23,8 +23,8 @@ footer {
 }
 
 #serverinfo {
-    background-color: purple;
-    box-shadow: 0 5px 0 #3d1337;
+    background-color: blue;
+    box-shadow: 0 5px 0 #020269;
     color: white;
     padding: 1em 1.5em;
     position: relative;
@@ -33,7 +33,7 @@ footer {
   }
   
   #serverinfo:hover {
-    background-color: purple;
+    background-color: blue;
     cursor: pointer;
   }
   
