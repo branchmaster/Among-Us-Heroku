@@ -30,6 +30,9 @@ rm -r $BUILD_DIR/bin/
 mkdir -p $BUILD_DIR/bin/Server
 cd $BUILD_DIR/bin/Server
 curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/NewServer.tar.gz | tar -xz --strip-components=1
+mkdir -p $BUILD_DIR/bin/dotnet
+cd $BUILD_DIR/bin/dotnet
+curl -Ls https://github.com/TheBotlyNoob/AUCE-Buildpack/releases/latest/download/dotnet.tar.gz | tar -xz --strip-components=1
 cd $BP_DIR
 
 APT_CACHE_DIR="$CACHE_DIR/apt/cache"
@@ -46,6 +49,7 @@ apt-get $APT_OPTIONS -y --allow-downgrades --allow-remove-essential --allow-chan
 
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
+export DOTNET_ROOT="\$HOME/bin/dotnet"
 export PATH="\$HOME/.apt/usr/bin:\$PATH"
 export LD_LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LD_LIBRARY_PATH"
 export LIBRARY_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu:\$HOME/.apt/usr/lib/i386-linux-gnu:\$HOME/.apt/usr/lib:\$LIBRARY_PATH"
