@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+npm i --prefix bin/ -g
+
 echo "Starting: LocalTunnel"
 bin/localTunnel.js &
 tunnel_pid=$!
@@ -14,4 +16,4 @@ trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
-http-server bin/ -p $PORT
+bin/node_modules/http-server/bin/http-server bin/ -p $PORT
