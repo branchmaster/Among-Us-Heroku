@@ -21,6 +21,8 @@
         lines = lines.match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
+        $("<hr>").appendTo("#tunnel");
+        $("<br>").appendTo("#tunnel");
         $("<a/>", {
             id: 'serverinfo',
             href: `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`,
