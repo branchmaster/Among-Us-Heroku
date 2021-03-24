@@ -1,5 +1,9 @@
 @import "https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,bold&subset=Latin";
 
+.hidden {
+    display: none;
+}
+
 #tunnel {
     display: flex;
     justify-content: center;
@@ -15,8 +19,8 @@ footer {
     width: 100%;
 }
 #serverinfo {
-    background-color: red;
-    box-shadow: 0 5px 0 darkred;
+    background-color: purple;
+    box-shadow: 0 5px 0 #3d1337;
     color: white;
     padding: 1em 1.5em;
     position: relative;
@@ -25,7 +29,7 @@ footer {
   }
   
   #serverinfo:hover {
-    background-color: #ce0606;
+    background-color: purple;
     cursor: pointer;
   }
   

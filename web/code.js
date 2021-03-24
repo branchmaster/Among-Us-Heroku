@@ -1,7 +1,5 @@
 "use strict";
-
-$("#serverinfo").hide();
-
+$('#serverinfo').removeClass('hidden');
 (async () => {
     var linecontents = [],
         lines;
@@ -12,8 +10,8 @@ $("#serverinfo").hide();
         },
         method: 'GET',
         error: XMLHttpRequest => {
-            $("#tunnelurl").html(`Error: Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
-            throw new Error(`Error: Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
+            $("#tunnelurl").html(`Error: Failed Getting tunnel.log Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
+            throw new Error(`Failed Getting tunnel.log Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
         },
         success: data => {
             lines = data.toString().split("\n");
@@ -26,12 +24,11 @@ $("#serverinfo").hide();
         }
     }
 
-    if (lines.length != 0) {
+    if (linecontents.length != 0) {
         lines = lines[lines.length - 1].match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port 22023`);
         lines = lines.replace('https://', '');
-        $("#serverinfo").attr('href', `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`).html("Click To Get The Server File!");
-        $("#serverinfo").show();
+        $("#serverinfo").attr('href', `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`);
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }
