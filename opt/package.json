@@ -12,6 +12,6 @@
   "license": "MIT",
   "dependencies": {
     "http-server": "*",
-    "localtunnel": "*"
+    "ngrok": "*"
   }
 }

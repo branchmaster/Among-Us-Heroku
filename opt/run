@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
+
 BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 npm i --prefix $BIN_DIR
 
 echo "Starting: LocalTunnel"
-$BIN_DIR/localtunnel.js &
+$BIN_DIR/ngrok.js &
 tunnel_pid=$!
 sleep 5
 
