@@ -17,4 +17,4 @@ trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
-$BIN_DIR/node_modules/http-server/bin/http-server $BIN_DIR -p $PORT
+$BIN_DIR/node_modules/http-server/bin/http-server $BIN_DIR -c -1 -p $PORT
