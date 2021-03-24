@@ -5,6 +5,11 @@
     justify-content: center;
 }
 
+#serverinfocontainer {
+    display: flex;
+    justify-content: center;
+}
+
 #tunnel-url {
     text-align: center;
 }

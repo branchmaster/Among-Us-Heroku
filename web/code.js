@@ -28,7 +28,7 @@
             href: `https://impostor.github.io/Impostor/#${lines}`,
             text: 'Click Here To Get The Server File!',
             target: '_blank'
-        }).appendTo("body");
+        }).appendTo("#serverinfocontainer");
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }
