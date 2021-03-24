@@ -28,7 +28,7 @@
             href: `https://thebotlynoob.github.io/Among-Us-Heroku/#${lines}:22023`,
             text: 'Click Here To Get The Server File!',
             target: '_blank'
-        }).appendTo("#tunnel");
+        }).appendTo("body");
     } else {
         $("#tunnelurl").html(`You Don't Have A LocalTunnel URL... Try Again`);
     }
