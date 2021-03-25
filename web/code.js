@@ -18,9 +18,8 @@
     });
 
     if (lines) {
-        lines = lines.match(/tcp:\/\/(.+:[0-9]+) /)[1].toString().replace('tcp://', '');
+        lines = lines.match(/tcp:\/\/(.+:[0-9]+) /).toString().replace('tcp://', '');
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port ${port}`);
-        lines = lines.replace('tcp://', '');
         $("<hr>").appendTo("body");
         $("<br>").appendTo("body");
         $("<a/>", {
