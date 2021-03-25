@@ -13,15 +13,14 @@
             throw new Error(`Failed Getting tunnel.log. Status: ${XMLHttpRequest.status}, Status Text: ${XMLHttpRequest.statusText}`)
         },
         success: data => {
-            lines = data.split(":");
+            lines = data;
         }
     });
 
     if (lines) {
-        lines = lines[0].match(new RegExp("https://[A-Za-z0-9./\-]*")).toString();
-        port = lines[1];
+        lines = lines.match(/tcp:\/\/(.+:[0-9]+) /).toString().replace('tcp://', '');
         $("#tunnelurl").html(`Your LocalTunnel URL Is: ${lines} On Port ${port}`);
-        lines = lines.replace('https://', '');
+        lines = lines.replace('tcp://', '');
         $("<hr>").appendTo("body");
         $("<br>").appendTo("body");
         $("<a/>", {
