@@ -2,16 +2,16 @@
 
 if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
 
-BIN_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-npm i --prefix $BIN_DIR
+DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+$DIR/node/bin/npm i --prefix $DIR
 
-echo "Starting: LocalTunnel"
-$BIN_DIR/ngrok.js &
+echo "Starting: The Reverse Proxy"
+$DIR/proxy.js &
 tunnel_pid=$!
 sleep 5
 
 echo "Starting: The Server At Port 22023..."
-$BIN_DIR/Server/Impostor.Server &
+$DIR/Server/Impostor.Server &
 main_pid=$!
 sleep 2
 
@@ -19,4 +19,4 @@ trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
-php -S localhost:$PORT -t $BIN_DIR
+$DIR/php/bin/php -S localhost:$PORT -t $DIR
