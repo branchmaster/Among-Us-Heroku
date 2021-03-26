@@ -32,8 +32,8 @@ cp -a $OPT_DIR/. $BUILD_DIR/bin/
 cp -a $BP_DIR/../web/. $BUILD_DIR/bin/
 
 #Untar all files
-for TAR in $(ls -1 $BUILD_DIR/bin/*.tar.gz);do tar -zxvf $TAR -C $BUILD_DIR/bin/;done
+for TAR in $(ls -1 $BUILD_DIR/bin/*.tar.gz);do tar -zxf $TAR -C $BUILD_DIR/bin/;done
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
-chmod +x $BUILD_DIR/bin/ngrok.js
+chmod +x $BUILD_DIR/bin/proxy.js
