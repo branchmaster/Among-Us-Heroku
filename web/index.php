@@ -19,7 +19,7 @@
 <body>
 <!-- If I decide I want to go back to JS <noscript>JavaScript Is Required</noscript> -->
 <div id="tunnel">
-<h3 id="tunnelurl"><?php include("{__DIR__}/code.php");?></h>
+<h3 id="tunnelurl"><?php include(__DIR__."/code.php");?></h>
 </div>
 <hr>
 <div id="serverinfocontainer">

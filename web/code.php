@@ -1,5 +1,5 @@
 <?php 
-$url = file_get_contents("{__DIR__}/tunnel.log");
+$url = file_get_contents(__DIR__."/tunnel.log");
 if ($url !== "") {
     echo ("Your URL Is: $url");
 }
