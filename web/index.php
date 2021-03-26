@@ -19,15 +19,15 @@
 <body>
 <noscript>JavaScript Is Required</noscript>
 <div id="tunnel">
-<h3 id="tunnelurl"><?php include("code.php");?></h>
+<h3 id="tunnelurl"><?php include(__DIR__."/code.php");?></h>
 </div>
 <hr>
 <div id="serverinfocontainer">
-    <a id="serverinfo" href="<?php if ($url !== '') {
-        echo("https://impostor.github.io/Impostor/#" . $url);
+    <a id="serverinfo" href="<?php if ($url !== "") {
+        echo("https://impostor.github.io/Impostor/#$url");
         }
         ?>" target="_blank">
-        <?php if ($url !== '') {
+        <?php if ($url !== "") {
             echo("Click Here To Get The Server File!");
         }
         ?>
