@@ -19,9 +19,6 @@
     "buildpacks": [
       {
         "url": "https://github.com/TheBotlyNoob/AUCE-Buildpack"
-      },
-      {
-          "url": "https://github.com/heroku/heroku-buildpack-php"
       }
     ],
   "stack": "heroku-20"

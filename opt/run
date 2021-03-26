@@ -17,3 +17,7 @@ sleep 2
 
 trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
+
+echo "Starting: The Web Server"
+tar -zxf $DIR/php.tar.gz -C $DIR/
+$DIR/php/bin/php -S localhost:$PORT -t $DIR
