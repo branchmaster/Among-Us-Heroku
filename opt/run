@@ -3,7 +3,7 @@
 if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
 
 DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-$DIR/node/bin/npm i --prefix $DIR
+npm i --prefix $DIR
 
 echo "Starting: The Reverse Proxy"
 $DIR/proxy.js &
@@ -17,6 +17,3 @@ sleep 2
 
 trap "kill $tunnel_pid $main_pid" SIGTERM
 trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
-
-echo "Starting: The Web Server"
-$DIR/php/bin/php -S localhost:$PORT -t $DIR
