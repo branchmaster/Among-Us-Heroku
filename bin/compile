@@ -52,8 +52,8 @@ EOF
 for DEB in $(ls -1 $CACHE_DIR/apt/cache/archives/*.deb);do dpkg -x $DEB $BUILD_DIR/.apt/;done
 
 #Give files execution permissions
-cp -a $OPT_DIR/. $BUILD_DIR/bin/
-cp -a $BP_DIR/../web/. $BUILD_DIR/
+cp -R $OPT_DIR/. $BUILD_DIR/bin/
+cp -R $BP_DIR/../web/. $BUILD_DIR/bin/
 
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
