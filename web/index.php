@@ -19,7 +19,7 @@
 <body>
 <!-- If I decide I want to go back to JS <noscript>JavaScript Is Required</noscript> -->
 <div id="tunnel">
-<h3 id="tunnelurl"><?php include(__DIR__."/code.php");?></h>
+<h3 id="tunnelurl"><?php require(__DIR__."/code.php");?></h>
 </div>
 <hr>
 <div id="serverinfocontainer">
@@ -27,7 +27,8 @@
         echo("display: none;");
     } 
     ?>" id="serverinfo" href="<?php if ($url !== "") {
-        echo("https://impostor.github.io/Impostor/#$url");
+            $url = str_replace("tcp://", "", $url);
+            echo("https://impostor.github.io/Impostor/#$url");
         }
         ?>" target="_blank">
         <?php if ($url !== "") {
