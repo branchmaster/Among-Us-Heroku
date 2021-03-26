@@ -1,6 +1,6 @@
 {
-  "name": "Among Us Community Edition Server",
-  "description": "Make An Among Us Community Edition Server In Heroku!",
+  "name": "Among Us Heroku Server",
+  "description": "Make An Among Us Server In Heroku!",
   "repository": "https://github.com/TheBotlyNoob/AUCE-Buildpack",
   "logo": "https://cdn.discordapp.com/emojis/780994458816610325.png?v=1",
   "keywords": [
