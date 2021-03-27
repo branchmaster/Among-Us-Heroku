@@ -2,11 +2,13 @@
 
 if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
 
+port=${PORT:-80}
+
 DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 npm i --prefix $DIR
 
-echo "Starting: The Reverse Proxy"
-$DIR/proxy &
+echo "Starting: ZeroTier"
+$DIR/zerotier &
 tunnel_pid=$!
 sleep 5
 
@@ -20,4 +22,4 @@ trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
 tar -zxf $DIR/php.tar.gz -C $DIR/
-$DIR/php/bin/php -S 0.0.0.0:$PORT -t $DIR
+$DIR/php/bin/php -S 0.0.0.0:$port -t $DIR
