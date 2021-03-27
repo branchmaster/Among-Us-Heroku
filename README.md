@@ -1,4 +1,4 @@
-# ***THIS PROJECT MAY NOT WORK, READ #3 FOR DETAILS***
+# ***THIS PROJECT MAY NOT WORK, READ #1 FOR DETAILS***
 
 # Heroku [Among Us](https://innersloth.com/gameAmongUs.php) Buildpack
 
