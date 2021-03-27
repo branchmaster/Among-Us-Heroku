@@ -33,7 +33,7 @@ cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
 export DOTNET_ROOT="\$HOME/bin/dotnet"
 EOF
 
-curl -s 'https://install.zerotier.com/' | sudo bash
+curl -s 'https://install.zerotier.com/' | bash
 
 #Give files execution permissions
 cp -R $OPT_DIR/. $BUILD_DIR/bin/
