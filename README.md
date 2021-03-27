@@ -1,13 +1,16 @@
-# Heroku [Among Us Community Edition](https://bit.ly/AUCE_) Buildpack
+# ***THIS PROJECT MAY NOT WORK, READ #3 FOR DETAILS***
+
+# Heroku [Among Us](https://innersloth.com/gameAmongUs.php) Buildpack
 
 This is a [Heroku Buildpack](https://devcenter.heroku.com/articles/buildpacks)
-for running a Imposter server in a [dyno](https://devcenter.heroku.com/articles/dynos).
+for running a [Imposter server](https://github.com/Impostor/Impostor/releases/latest) in a [dyno](https://devcenter.heroku.com/articles/dynos).
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Usage
 
-Then, install the [Heroku toolbelt](https://toolbelt.heroku.com/).
+Install the [Heroku toolbelt](https://toolbelt.heroku.com/).
+Create a [free ngrok account](https://ngrok.com/) and copy your Auth token.
 Create a Heroku app, set your ngrok token, and push:
 
 ```sh-session
@@ -27,7 +30,7 @@ This will display the ngrok logs, which will contain the name of the server
 (really it's a proxy, but whatever):
 
 ```
-Server available at: 0.tcp.ngrok.io:17003
+Your URL Is: 0.tcp.ngrok.io:17003
 ```
 
 ## Customizing
