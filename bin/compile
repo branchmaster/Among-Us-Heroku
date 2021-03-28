@@ -33,7 +33,46 @@ cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
 export DOTNET_ROOT="\$HOME/bin/dotnet"
 EOF
 
-curl -s 'https://install.zerotier.com/' | bash
+echo -n "-----> Installing ZeroTier... "
+if z=$(curl -s 'https://install.zerotier.com/' | sudo bash); then echo "$z" | sudo bash; fi
+zerotier-cli join ${ZEROTIER_NETWORK:-"a09acf0233ff78ad"}
+#!/bin/sh
+
+set -eu
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+export_env_dir() {
+  env_dir=$1
+  whitelist_regex=${2:-''}
+  blacklist_regex=${3:-'^(PATH|GIT_DIR|CPATH|CPPATH|LD_PRELOAD|LIBRARY_PATH|JAVA_OPTS)$'}
+  if [ -d "$env_dir" ]; then
+    for e in $(ls $env_dir); do
+      echo "$e" | grep -E "$whitelist_regex" | grep -qvE "$blacklist_regex" &&
+      export "$e=$(cat $env_dir/$e)"
+      :
+    done
+  fi
+}
+
+BP_DIR="$(cd "$(dirname "$0")" && pwd)"
+BUILD_DIR=$1
+CACHE_DIR=$2
+OPT_DIR=$BP_DIR/../opt/
+export_env_dir $3
+
+if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
+
+#Set environment variables for every startup
+mkdir -p $BUILD_DIR/.profile.d
+cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
+export DOTNET_ROOT="\$HOME/bin/dotnet"
+EOF
+
+curl -Ls 'https://raw.githubusercontent.com/zerotier/ZeroTierOne/master/doc/contact%40zerotier.com.gpg' | gpg --import && \
+if z=$(curl -s 'https://install.zerotier.com/' | gpg); then echo "$z" | sudo bash; fi
 
 #Give files execution permissions
 cp -R $OPT_DIR/. $BUILD_DIR/bin/
