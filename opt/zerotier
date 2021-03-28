@@ -1,3 +1,0 @@
-#!/bin/sh
-
-zerotier-cli join ${ZEROTIER_NETWORK:-"a09acf0233ff78ad"}
