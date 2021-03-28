@@ -2,7 +2,8 @@
 
 "use strict";
 
-const ngrok_authtoken = process.env.NGROK_API_TOKEN;
+const ngrok_authtoken = arguments[0];
+const DIR = arguments[1];
 
 const fs = require("fs"),
     ngrok = require("ngrok");
@@ -10,10 +11,10 @@ const fs = require("fs"),
 (async () => {
     const url = await ngrok.connect({
         port: 22023,
-        proto: "tcp",
+        proto: "udp",
         authtoken: ngrok_authtoken
     });
-    fs.writeFile("bin/tunnel.log", url, err => {
+    fs.writeFile(`${DIR}/tunnel.log`, url, err => {
         if (err) throw err;
     });
 })();
