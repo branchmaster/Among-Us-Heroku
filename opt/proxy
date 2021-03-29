@@ -11,7 +11,7 @@ const fs = require("fs"),
 (async () => {
     const url = await ngrok.connect({
         port: 22023,
-        proto: "udp",
+        proto: "tcp",
         authtoken: ngrok_authtoken
     });
     fs.writeFile(`${DIR}/tunnel.log`, url, err => {
