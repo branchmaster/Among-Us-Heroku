@@ -40,6 +40,10 @@ footer {
     box-shadow: none;
     top: 5px;
   }
+#issuepage {
+    text-decoration: none;
+    color: grey;
+}
 
 body {
     background-color: black;
@@ -47,4 +51,36 @@ body {
     color: white;
     font-family: "Ubuntu Mono","times new roman",times,roman,serif;
     text-shadow: 0 0 5px #C8C8C8;
+}
+
+/* For github */
+
+.github, .github:hover, .github:active {
+  font-family: "Ubuntu Mono","times new roman",times,roman,serif;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-flex;
+  padding: 8px 12px;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  background-color: rgb(17, 29, 44);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.github img {
+  width: 20px;
+  margin-right: 4px;
+  height: auto;
+}
+
+.github img:hover, .github:hover > img {
+	animation: rotation 2s infinite linear;
+}
+
+.github:hover {
+	cursor: pointer !important;
+	font-size: 13.5px !important;
 }
