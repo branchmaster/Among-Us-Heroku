@@ -59,13 +59,11 @@ html {
     text-shadow: 0 0 5px #C8C8C8;
 }
 
-/* For github */
-
 .github, .github:hover, .github:active {
   font-family: "Ubuntu Mono","times new roman",times,roman,serif;
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
   display: inline-flex;
   padding: 8px 12px;
   align-items: center;
