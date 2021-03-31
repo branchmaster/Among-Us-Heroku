@@ -3,6 +3,7 @@
 #tunnel {
     display: flex;
     justify-content: center;
+    margin-top:5vw;
 }
 
 #serverinfocontainer {
@@ -45,9 +46,14 @@ footer {
     color: grey;
 }
 
-body {
+html {
+    background: url("https://innersloth.com/Images/GAMES/AmongUs/2019_halloweenPromo.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     background-color: black;
-    height: 100vw;
+    height: 100%;
     color: white;
     font-family: "Ubuntu Mono","times new roman",times,roman,serif;
     text-shadow: 0 0 5px #C8C8C8;
