@@ -3,7 +3,6 @@
 #tunnel {
     display: flex;
     justify-content: center;
-    margin-top:5vw;
 }
 
 #serverinfocontainer {
@@ -42,17 +41,16 @@ footer {
     top: 5px;
   }
 #issuepage {
-    text-decoration: none;
-    color: grey;
+    color: white;
 }
 
 html {
-    background: url("https://innersloth.com/Images/GAMES/AmongUs/2019_halloweenPromo.jpg") no-repeat center center fixed; 
+    background: url("https://wallpapercave.com/wp/wp7445961.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
     background-color: black;
+    background-size: 100% 100%;
     height: 100%;
     color: white;
     font-family: "Ubuntu Mono","times new roman",times,roman,serif;

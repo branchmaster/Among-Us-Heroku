@@ -32,13 +32,3 @@ This will display the ngrok logs, which will contain the name of the server
 ```
 Your URL Is: 0.tcp.ngrok.io:17003
 ```
-
-## Customizing
-
-### ngrok
-
-You can customize ngrok by setting the `NGROK_OPTS` config variable. For example:
-
-```
-$ heroku config:set NGROK_OPTS="--remote-addr 1.tcp.ngrok.io:25565"
-```
