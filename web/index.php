@@ -14,9 +14,14 @@
 <body>
 <div id="tunnel">
 <h3 id="tunnelurl"><?php try {
-    $url = @file_get_contents(__DIR__."/tunnel.log");
+    try {
+        $url = @file_get_contents("/app/.config/playit/config.json");
+    } catch(Exception $e) {
+        $url = false;
+    }
     if ($url !== false) {
-        echo ("Your URL Is: $url");
+        $url = json_decode($url);
+        echo ("Your URL Is: https://playit.gg/claim/v3/$url->agent_key");
     }
     else {
         echo ("The URL File Doesn´t Seem To Exist... Try Deploying Again, If It Still Doesn´t Work Then Make An Issue At <a id='issuepage' target='_blank' rel='noopener noreferrer' href='https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/new'>The GitHub Page</a>");
