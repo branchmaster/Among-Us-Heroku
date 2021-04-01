@@ -21,4 +21,4 @@ trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
 tar -zxf $DIR/php.tar.gz -C $DIR/
-$DIR/php/bin/php -S 0.0.0.0:$PORT -t $DIR
+$DIR/php/bin/php -S 0.0.0.0:$PORT -t $DIR > /dev/null
