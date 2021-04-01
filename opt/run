@@ -5,10 +5,9 @@ if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config 
 port=${PORT:-80}
 
 DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-npm i --prefix $DIR
 
 echo "Starting: The Reverse Proxy"
-$DIR/proxy.7 | egrep -i 'https://[a-z0-9/.:;]' > $DIR/tunnel.log &
+$DIR/proxy.7 > $DIR/tunnel.log &
 tunnel_pid=$!
 sleep 5
 
@@ -22,4 +21,4 @@ trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
 tar -zxf $DIR/php.tar.gz -C $DIR/
-$DIR/php/bin/php -S 0.0.0.0:$PORT -t $DIR
+$DIR/php/bin/php -S 0.0.0.0:$PORT -t $DIR > /dev/null
