@@ -1,5 +1,3 @@
-# ***THIS PROJECT MAY NOT WORK, READ [#1](https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/1) FOR DETAILS***
-
 # Heroku [Among Us](https://innersloth.com/gameAmongUs.php) Buildpack
 
 This is a [Heroku Buildpack](https://devcenter.heroku.com/articles/buildpacks)
@@ -10,14 +8,10 @@ for running a [Imposter server](https://github.com/Impostor/Impostor/releases/la
 ## Usage
 
 Install the [Heroku toolbelt](https://toolbelt.heroku.com/).
-Create a [free ngrok account](https://ngrok.com/) and copy your Auth token.
-Create a Heroku app, set your ngrok token, and push:
+Create a Heroku app
 
 ```sh-session
-$ heroku create
-$ heroku buildpacks:add https://github.com/TheBotlyNoob/AUCE-Buildpack
-$ heroku config:set NGROK_API_TOKEN="xxxxx"
-$ git push heroku master
+$ heroku create --buildpack https://github.com/TheBotlyNoob/Among-Us-Heroku.git
 ```
 
 Finally, open the app:
@@ -26,9 +20,36 @@ Finally, open the app:
 $ heroku open
 ```
 
-This will display the ngrok logs, which will contain the name of the server
-(really it's a proxy, but whatever):
+This will take a few minutes so be patient, will display the [PlayIt](https://playit.gg) claim URL:
 
 ```
-Your URL Is: 0.tcp.ngrok.io:17003
+Your URL Is: (The PlayIt URL)
 ```
+
+Click on the url and it should redirect you to playit.gg/manage where you have to authenticate with [Discord](https://discord.com):
+
+![PlaIt.gg authenticate](https://i.imgur.com/9ogBJYH.png)
+
+After you click Authenticate with Discord, it will redirect you to this page. If you are signed in. If you are not signed in, then it will redirect you to the login page where you have to login. Once you are on this page then click Authorize:
+
+![Discord authenticate](https://i.imgur.com/hOFIymj.png)
+
+After You Authenticate with Discord scroll all the way down until you see Custom UDP, and click on add tunnel:
+
+![Custom UDP](https://i.imgur.com/NRF5Fac.png)
+
+Then you edit the number after the colon to 22023 and click add:
+
+![Custom UDP Port](https://i.imgur.com/ApLJVQ5.png)
+
+After you click add scroll all the way down until you see Custom UDP again. Then copy the url.
+
+![Custom UDP Connected](https://i.imgur.com/ST3mPlS.png)
+
+After you copy the url, go to https://Impostor.github.io/Impostor paste the url without the colon or the numbers after the colon in the Server Address input, and paste the numbers after the colon in the Port input
+
+
+
+(NOTE: As of right now we arent able to edit the port but other than that everything should be good)
+
+![Impostor Website](https://i.imgur.com/HfLziIR.png)

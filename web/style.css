@@ -14,32 +14,6 @@
     text-align: center;
 }
 
-footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-}
-
-#serverinfo {
-    background-color: blue;
-    box-shadow: 0 5px 0 darkblue;
-    color: white;
-    padding: 1em 1.5em;
-    position: relative;
-    text-decoration: none;
-  }
-  
-  #serverinfo:hover {
-    background-color: blue;
-    cursor: pointer;
-  }
-  
-  #serverinfo:active {
-    box-shadow: none;
-    top: 5px;
-  }
 #issuepage {
     color: white;
 }
