@@ -1,1 +1,0 @@
-{"Clothes":7,"Hat":15,"Pet":0,"Name":"Elegant Suit"}

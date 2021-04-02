@@ -1,1 +1,0 @@
-{"Clothes":14,"Hat":23,"Pet":0,"Name":"Christmas"}
