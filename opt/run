@@ -8,8 +8,6 @@ DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 
 echo "Starting: The Reverse Proxy"
 $DIR/proxy.7 &
-tunnel_pid=$!
-echo $tunnel_pid
 sleep 5
 
 echo "Starting: The Server At Port 22023..."
@@ -20,8 +18,8 @@ $DIR/Server/Impostor.Server &
 main_pid=$!
 sleep 2
 
-trap "kill $tunnel_pid $main_pid" SIGTERM
-trap "kill -9 $tunnel_pid $main_pid; exit" SIGKILL
+trap "kill $main_pid" SIGTERM
+trap "kill -9 $main_pid; exit" SIGKILL
 
 echo "Starting: The Web Server"
 tar -zxf $DIR/php.tar.gz -C $DIR/
