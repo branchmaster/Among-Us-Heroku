@@ -26,7 +26,7 @@ This will take a few minutes so be patient, will display the [PlayIt](https://pl
 Your URL Is: (The PlayIt URL)
 ```
 
-Click on the url and it should redirect you to playit.gg/manage. Scroll all the way down until you see Custom UDP, and click on add tunnel:
+Click on the URL and it should redirect you to playit.gg/manage. Scroll all the way down until you see Custom UDP, and click on add tunnel:
 
 ![Custom UDP](https://i.imgur.com/NRF5Fac.png)
 
@@ -34,11 +34,11 @@ Then you edit the number after the colon to 22023 and click add:
 
 ![Custom UDP Port](https://i.imgur.com/ApLJVQ5.png)
 
-After you click add scroll all the way down until you see Custom UDP again. Then copy the url.
+After you click add scroll all the way down until you see Custom UDP again. Then copy the URL.
 
 ![Custom UDP Connected](https://i.imgur.com/ST3mPlS.png)
 
-After you copy the url, go to https://Impostor.github.io/Impostor paste the url without the colon or the numbers after the colon in the Server Address input, and paste the numbers after the colon in the Port input
+After you copy the URL, go to https://Impostor.github.io/Impostor paste the URL without the colon or the numbers after the colon in the Server Address input, and paste the numbers after the colon in the Port input
 
 
 
