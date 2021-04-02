@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ImpostorHQ Hall Of Shame</title>
+		<link rel="apple-touch-icon" sizes="57x57" href="ico/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="ico/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="ico/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="ico/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="ico/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="ico/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="ico/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="ico/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="ico/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="ico/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<link rel="stylesheet" href="css/water.css">
+		<link rel="stylesheet" href="css/align.css">
+		<link rel="stylesheet" href="css/header.css">
+		<style>
+            html, body {
+                font-family: 'Open Sans', 'Lucida Grande', 'Arial', 'Helvetica', 'sans-serif', 'headerFont';
+                background-color: #141414;
+                max-width: none;
+            }
+		</style>
+	
+	</head>
+	<body>
+	<div class="header">
+		<div class="header" style="display: inline;">
+			<img src="ico/apple-touch-icon-60x60.png" style="vertical-align:middle">
+			<h1 style="display: inline; vertical-align: middle; color:#ff0000; font-family: headerFont;">Impostor<b style="color: #41BB3F;">HQ</b><b style="color: #0000ff;"> Hall of Shame</b></h1>
+			<div class="header-right">
+			</div>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%; display: grid; grid-template-rows:auto auto; grid-template-columns:50% auto;">
+			<div>
+				<table style="border: 1px solid white; width:500px">
+					<tr>
