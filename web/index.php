@@ -24,10 +24,10 @@
         echo ("Your URL Is: <a href='https://playit.gg/claim/v3/$url->agent_key' target='_blank' rel='noopener noreferrer'>https://playit.gg/claim/v3/$url->agent_key</a>");
     }
     else {
-        echo ("The URL File Doesn´t Seem To Exist... Try Deploying Again, If It Still Doesn´t Work Then Make An Issue At <a target='_blank' rel='noopener noreferrer' href='https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/new'>The GitHub Page</a>");
+        echo ("The URL File Doesn't Seem To Exist... Try Deploying Again, If It Still Doesn't Work Then Make An Issue At <a target='_blank' rel='noopener noreferrer' href='https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/new'>The GitHub Page</a>");
     }
 } catch(Exception $e) {
-    echo("$e->getMessage()\nTry Deploying Again, If It Still Doesn´t Work Then Make An Issue At <a target='_blank' rel='noopener noreferrer' href='https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/new'>The GitHub Page</a>");
+    echo("$e->getMessage()\nTry Deploying Again, If It Still Doesn't Work Then Make An Issue At <a target='_blank' rel='noopener noreferrer' href='https://github.com/TheBotlyNoob/Among-Us-Heroku/issues/new'>The GitHub Page</a>");
 }
 ?>
 </h>
