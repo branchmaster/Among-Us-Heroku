@@ -10,12 +10,6 @@
   "Among Us Server",
   "Among Us Server Heroku"
   ],
-  "env": {
-    "NGROK_API_TOKEN": {
-        "description": "Your personal ngrok API token",
-        "required": true
-      }
-  },
     "buildpacks": [
       {
         "url": "https://github.com/TheBotlyNoob/Among-Us-Heroku"
