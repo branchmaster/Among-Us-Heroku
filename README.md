@@ -26,15 +26,7 @@ This will take a few minutes so be patient, will display the [PlayIt](https://pl
 Your URL Is: (The PlayIt URL)
 ```
 
-Click on the url and it should redirect you to playit.gg/manage where you have to authenticate with [Discord](https://discord.com):
-
-![PlaIt.gg authenticate](https://i.imgur.com/9ogBJYH.png)
-
-After you click Authenticate with Discord, it will redirect you to this page. If you are signed in. If you are not signed in, then it will redirect you to the login page where you have to login. Once you are on this page then click Authorize:
-
-![Discord authenticate](https://i.imgur.com/hOFIymj.png)
-
-After You Authenticate with Discord scroll all the way down until you see Custom UDP, and click on add tunnel:
+Click on the url and it should redirect you to playit.gg/manage. Scroll all the way down until you see Custom UDP, and click on add tunnel:
 
 ![Custom UDP](https://i.imgur.com/NRF5Fac.png)
 
