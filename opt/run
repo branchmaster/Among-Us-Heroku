@@ -10,7 +10,7 @@ echo "Starting: The Reverse Proxy"
 $DIR/proxy.7 &
 sleep 5
 
-echo "Starting: The Server At Port 22023..."}
+echo "Starting: The Server At Port 22023..."
 $DIR/Server/Impostor.Server &
 main_pid=$!
 sleep 2
@@ -18,5 +18,5 @@ sleep 2
 trap "kill $main_pid" SIGTERM
 trap "kill -9 $main_pid; exit" SIGKILL
 
-echo "Starting: The Web Server"}
+echo "Starting: The Web Server"
 php -S 0.0.0.0:$PORT -t $DIR > /dev/null
