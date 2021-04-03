@@ -450,11 +450,6 @@
                 The name is provided by the player and should not be used to store persisted data.
             </remarks>
         </member>
-        <member name="P:Impostor.Api.Net.IClient.Mods">
-            <summary>
-                Gets mods sent by client in modded handshake.
-            </summary>
-        </member>
         <member name="P:Impostor.Api.Net.IClient.Connection">
             <summary>
                 Gets the connection of the client.
@@ -720,12 +715,12 @@
                 Gets the reason why the player is dead in the current game.
             </summary>
         </member>
-        <member name="M:Impostor.Api.Net.Messages.C2S.Message00HostGameC2S.Deserialize(Impostor.Api.Net.Messages.IMessageReader,Impostor.Api.Innersloth.ChatType@)">
+        <member name="M:Impostor.Api.Net.Messages.C2S.Message00HostGameC2S.Deserialize(Impostor.Api.Net.Messages.IMessageReader,Impostor.Api.Innersloth.QuickChatModes@)">
             <summary>
                 Deserialize a packet.
             </summary>
             <param name="reader"><see cref="T:Impostor.Api.Net.Messages.IMessageReader" /> with <see cref="P:Impostor.Api.Net.Messages.IMessageReader.Tag" /> 0.</param>
-            <param name="chatType">The chat type selected in the client of the player.</param>
+            <param name="chatMode">The chat type selected in the client of the player.</param>
             <returns>Deserialized <see cref="T:Impostor.Api.Innersloth.GameOptionsData" />.</returns>
         </member>
         <member name="P:Impostor.Api.Net.Messages.IMessageReader.Tag">
@@ -895,26 +890,6 @@
                 typically requires more processing, more memory (as packets need to be stored in case they need resending),
                 a larger number of protocol bytes and can be slower than unreliable delivery.
             </remarks>
-        </member>
-        <member name="T:Impostor.Api.Reactor.PluginSide">
-            <summary>
-                Plugin side used in modded handshake.
-            </summary>
-        </member>
-        <member name="F:Impostor.Api.Reactor.PluginSide.Both">
-            <summary>
-                Required by both sides, reject connection if missing on the other side
-            </summary>
-        </member>
-        <member name="F:Impostor.Api.Reactor.PluginSide.ClientOnly">
-            <summary>
-                Required only by client
-            </summary>
-        </member>
-        <member name="F:Impostor.Api.Reactor.PluginSide.ServerOnly">
-            <summary>
-                Required only by server
-            </summary>
         </member>
         <member name="M:Impostor.Api.Unity.Mathf.Clamp(System.Single,System.Single,System.Single)">
             <summary>
