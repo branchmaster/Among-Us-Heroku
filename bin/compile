@@ -28,7 +28,7 @@ export_env_dir $3
 if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
 
 rm $BUILD_DIR/README.md $BUILD_DIR/LICENSE $BUILD_DIR/app.json
-rm -rf $BUILD_DIR/bin
+rm -rf $BUILD_DIR/bin $BUILD_DIR/opt $BUILD_DIR/web
 
 mkdir -p "$CACHE_DIR/apt/cache/archives/partial"
 mkdir -p "$CACHE_DIR/apt/state/lists/partial"
@@ -53,6 +53,7 @@ EOF
 for DEB in $(ls -1 $CACHE_DIR/apt/cache/archives/*.deb);do dpkg -x $DEB $BUILD_DIR/.apt/;done
 
 #Give files execution permissions
+mkdir -p $BUILD_DIR/bin/
 cp -R $OPT_DIR/. $BUILD_DIR/bin/
 cp -R $BP_DIR/../web/. $BUILD_DIR/bin/
 
