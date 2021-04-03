@@ -14,7 +14,7 @@
 <body>
 <div id="tunnel">
 <h3 id="tunnelurl"><?php try {
-    $url = json_decode(@file_get_contents(__DIR__."/../.config/playit/config.json")) ?? false;
+    $url = json_decode(file_get_contents(__DIR__."/../.config/playit/config.json")) ?? false;
     if ($url !== false) {
         $url = "https://playit.gg/claim/v3/$url->agent_key";
         echo ("Your URL Is: <a target='_blank' rel='noopener noreferrer' href='{$url}'>{$url}</a>");
