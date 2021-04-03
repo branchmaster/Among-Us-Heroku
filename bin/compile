@@ -46,7 +46,7 @@ export INCLUDE_PATH="\$HOME/.apt/usr/include:\$INCLUDE_PATH"
 export CPATH="\$INCLUDE_PATH"
 export CPPPATH="\$INCLUDE_PATH"
 export PKG_CONFIG_PATH="\$HOME/.apt/usr/lib/x86_64-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/i386-linux-gnu/pkgconfig:\$HOME/.apt/usr/lib/pkgconfig:\$PKG_CONFIG_PATH"
-export PYTHONPATH="\$HOME/.apt/usr/lib/python2.7/dist-packages"
+export PYTHONPATH="\$HOME/.apt/usr/lib/python2/dist-packages"
 EOF
 
 #Install the downloaded packages above
@@ -61,4 +61,4 @@ chmod +x $BUILD_DIR/bin/dotnet/dotnet
 chmod +x $BUILD_DIR/bin/php/bin/php
 chmod +x $BUILD_DIR/bin/Server/Impostor.Server
 chmod +x $BUILD_DIR/bin/run
-chmod +x $BUILD_DIR/bin/proxy.7
+chmod +x $BUILD_DIR/bin/proxy

@@ -7,7 +7,7 @@ port=${PORT:-80}
 DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 
 echo "Starting: The Reverse Proxy"
-$DIR/proxy.7 &
+$DIR/proxy &
 sleep 5
 
 echo "Starting: The Server At Port 22023..."
