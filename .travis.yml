@@ -4,5 +4,8 @@ os:
     - linux
 
 script:
-    - bash -n bin/compile && bash -n bin/detect && bash -n bin/release && bash -n opt/run
+    - bash -n bin/compile 
+    - bash -n bin/detect 
+    - bash -n bin/release 
+    - bash -n opt/run
     
