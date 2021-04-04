@@ -41,7 +41,7 @@ html {
   align-items: center;
   color: white;
   text-decoration: none;
-  background-color: rgb(17, 29, 44);
+  background-color: #111d2c;
   border-radius: 6px;
   font-size: 12px;
 }
@@ -54,6 +54,15 @@ html {
 
 .github img:hover, .github:hover > img {
 	animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .github:hover {
