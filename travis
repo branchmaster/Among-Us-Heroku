@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+bash -n opt/run
+bash -n bin/compile
+bash -n bin/detect
+bash -n bin/release
