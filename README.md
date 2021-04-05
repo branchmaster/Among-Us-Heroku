@@ -40,10 +40,4 @@ After you click add scroll all the way down until you see Custom UDP again. Then
 
 After you copy the URL, go to https://Impostor.github.io/Impostor paste the URL without the colon or the numbers after the colon in the Server Address input, and paste the numbers after the colon in the Port input
 
-
-
-(NOTE: As of right now we arent able to edit the port but other than that everything should be good)
-
-![Impostor Website](https://i.imgur.com/LNXCmtK.png)
-
-## Requesting Plugins For Impostor
+![Impostor Website](https://i.imgur.com/X306g1N.png)
