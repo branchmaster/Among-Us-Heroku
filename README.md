@@ -45,3 +45,5 @@ After you copy the URL, go to https://Impostor.github.io/Impostor paste the URL 
 (NOTE: As of right now we arent able to edit the port but other than that everything should be good)
 
 ![Impostor Website](https://i.imgur.com/LNXCmtK.png)
+
+## Requesting Plugins For Impostor

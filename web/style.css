@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,bold&subset=Latin";
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono:regular,bold&subset=Latin");
 
 #tunnel {
     display: flex;
