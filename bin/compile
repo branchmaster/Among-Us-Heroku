@@ -29,8 +29,15 @@ find $BUILD_DIR -delete
 
 if [[ -v PLUGIN_URL ]]; then
     echo "-----> Installing Plugins..."
-    mkdir -p $BUILD_DIR/bin/Server
-    curl -sSL $PLUGIN_URL | tar -xz --strip-components=1 -C $BUILD_DIR/bin/Server
+    mkdir -p $BUILD_DIR/bin/Server/plugins
+    wget $PLUGIN_URL -p $BUILD_DIR/bin/Server
+    filename=$(basename "$PLUGIN_URL")
+    extension="${$BUILD_DIR/bin/Server/$filename##*.}"
+    if [[ "$extension" == "gz" ]];then
+        tar -xf $BUILD_DIR/bin/Server/$filename --strip-components=1 -C $BUILD_DIR/bin/Server
+    else
+        mv $BUILD_DIR/bin/Server/$filename $BUILD_DIR/bin/Server/plugins/$filename
+    fi
 fi
 
 echo "-----> Installing Dependencies"
