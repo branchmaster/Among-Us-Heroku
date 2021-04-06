@@ -27,9 +27,10 @@ export_env_dir $3
 
 find $BUILD_DIR -delete
 
-if [[ -v PLUGIN_URL ]]; then
+mkdir -p $BUILD_DIR/bin/Server/plugins
+
+if [[ -v "${PLUGIN_URL}" ]]; then
     echo "-----> Installing Plugins..."
-    mkdir -p $BUILD_DIR/bin/Server/plugins
     wget $PLUGIN_URL -p $BUILD_DIR/bin/Server
     filename=$(basename "$PLUGIN_URL")
     extension="${$BUILD_DIR/bin/Server/$filename##*.}"
