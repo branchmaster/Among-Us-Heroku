@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -eu
+set -e
 
 indent() {
   sed -u 's/^/       /'
@@ -34,7 +35,7 @@ if [ ! -z "${PLUGIN_URL}" ]; then
     wget "$PLUGIN_URL" -P $BUILD_DIR/bin/Server
     file="$BUILD_DIR/bin/Server/$(basename "$PLUGIN_URL")"
     extension=$([ "$file" = *.* ] && echo ".${file##*.}" || echo '')
-    if [] "$extension" == "gz" ];then
+    if [ "$extension" == "gz" ];then
         tar -xf $BUILD_DIR/bin/Server/$file --strip-components=1 -C $BUILD_DIR/bin/Server
     else
         mv $file $BUILD_DIR/bin/Server/plugins/$(basename "$file")
