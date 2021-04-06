@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eu
 
@@ -29,12 +29,12 @@ find $BUILD_DIR -delete
 
 mkdir -p $BUILD_DIR/bin/Server/plugins
 
-if [ ! -z "${PLUGIN_URL}" ]; then
+if [[ ! -z "${PLUGIN_URL}" ]]; then
     echo "-----> Installing Plugins..."
     wget $PLUGIN_URL -P $BUILD_DIR/bin/Server
     filename=$(basename "$PLUGIN_URL")
     extension="${$BUILD_DIR/bin/Server/$filename##*.}"
-    if [ "$extension" == "gz" ];then
+    if [[ "$extension" == "gz" ]];then
         tar -xf $BUILD_DIR/bin/Server/$filename --strip-components=1 -C $BUILD_DIR/bin/Server
     else
         mv $BUILD_DIR/bin/Server/$filename $BUILD_DIR/bin/Server/plugins/$filename
