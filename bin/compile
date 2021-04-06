@@ -29,7 +29,7 @@ find $BUILD_DIR -delete
 
 mkdir -p $BUILD_DIR/bin/Server/plugins
 
-if [ -v "${PLUGIN_URL}" ]; then
+if [ ! -z "${PLUGIN_URL}" ]; then
     echo "-----> Installing Plugins..."
     wget $PLUGIN_URL -p $BUILD_DIR/bin/Server
     filename=$(basename "$PLUGIN_URL")
