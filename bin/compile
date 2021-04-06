@@ -25,14 +25,20 @@ CACHE_DIR=$2
 OPT_DIR=$BP_DIR/../opt/
 export_env_dir $3
 
-if [ -z "$NGROK_API_TOKEN" ];then echo "You must set the NGROK_API_TOKEN config var to create a TCP tunnel!";exit 1;fi
-
 find $BUILD_DIR -delete
+
+if [[ -v PLUGIN_URL ]]; then
+    echo "-----> Installing Plugins..."
+    mkdir -p $BUILD_DIR/bin/Server
+    curl -sSL $PLUGIN_URL | tar -xz --strip-components=1 -C $BUILD_DIR/bin/Server
+fi
+
+echo "-----> Installing Dependencies"
 
 mkdir -p "$CACHE_DIR/apt/cache/archives/partial"
 mkdir -p "$CACHE_DIR/apt/state/lists/partial"
-apt-get -o debug::nolocking=true -o dir::cache=$CACHE_DIR/apt/cache -o dir::state=$CACHE_DIR/apt/state update -y | indent > /dev/null
-apt-get -o debug::nolocking=true -o dir::cache=$CACHE_DIR/apt/cache -o dir::state=$CACHE_DIR/apt/state -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall libpci-dev | indent > /dev/null
+apt-get -o debug::nolocking=true -o dir::cache=$CACHE_DIR/apt/cache -o dir::state=$CACHE_DIR/apt/state update -y | indent
+apt-get -o debug::nolocking=true -o dir::cache=$CACHE_DIR/apt/cache -o dir::state=$CACHE_DIR/apt/state -y --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall libpci-dev | indent
 
 #Set environment variables for every startup
 mkdir -p $BUILD_DIR/.profile.d
@@ -52,8 +58,7 @@ EOF
 for DEB in $(ls -1 $CACHE_DIR/apt/cache/archives/*.deb);do dpkg -x $DEB $BUILD_DIR/.apt/;done
 
 #Give files execution permissions
-mkdir -p $BUILD_DIR/bin/
-curl -sL "https://playit.gg/downloads/playit-linux_64-0.3.8" -o $BUILD_DIR/bin/proxy
+curl -sSL "https://playit.gg/downloads/playit-linux_64-0.3.8" -o $BUILD_DIR/bin/proxy
 cp -R $OPT_DIR/. $BUILD_DIR/bin/
 cp -R $BP_DIR/../web/. $BUILD_DIR/bin/
 
