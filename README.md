@@ -41,3 +41,13 @@ After you click add scroll all the way down until you see Custom UDP again. Then
 After you copy the URL, go to https://Impostor.github.io/Impostor paste the URL without the colon or the numbers after the colon in the Server Address input, and paste the numbers after the colon in the Port input
 
 ![Impostor Website](https://i.imgur.com/X306g1N.png)
+
+## Impostor Plugins
+
+***Note: I will not provide support for plugins, if you have issues with the plugin(s) please ask the plugin creator, NOT ME.***
+
+Create an config variable called PLUGIN_URL, and set that variable to the download link to the plugin:
+
+```sh-session
+$ heroku config:set PLUGIN_URL="xxxxx"
+```
