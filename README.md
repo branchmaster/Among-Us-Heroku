@@ -51,4 +51,3 @@ Create an config variable called PLUGIN_URL, and set that variable to the downlo
 ```sh-session
 $ heroku config:set PLUGIN_URL="xxxxx"
 ```
-cd web
