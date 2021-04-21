@@ -15,4 +15,3 @@ jobs:
           bash -n bin/detect 
           bash -n bin/release 
           bash -n opt/run
-          
